@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css" href=""></style>
+	<!-- working script location(in head or body) for performance: chrome X, firefox O -->
+	<!-- better to locate in head caused by variables usage -->
+	<script type="text/javascript" src="http://localhost:8080/day1/script.js"></script>
+	<script type="text/javascript">
+		//var str = "hello";
+		console.log(str);
+		alert(str);
+	</script>
+
+</head>
+<body>
+	<button onclick="alert('hello btn')">click me</button> <!-- directly code usage is not recommended -->
+	<a href="http://www.google.com">Go google</a>
+	<a href="javascript:alert('hello anchor')">click me</a> <!-- directly code usage is not recommended -->
+	<!-- scripts is recommended to be located and collected in single location -->
+	
+	
+</body>
+</html>
