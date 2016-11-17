@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+function sync1(v){
+	return v + 2;
+}
+function sync2(v){
+	return v + 3;
+}
+function sync3(v){
+	return v + 4;
+}
+
+ var r1 = sync1(1);
+var r2 = sync2(r1);
+var r3 = sync3(r2);
+
+//var r3 = sync3(sync2(sync1(1)));
+ 
+console.log('result: %d, %d, %d', r1, r2, r3);
+
+//////////////////////////////////////////
+
+function async1(v, cb){
+	setTimeout(function(){
+		console.log('timeout.')
+		cb(v + 2);
+	}, 0);
+}
+function async2(v, cb){
+	setTimeout(function(){
+		cb(v + 3);
+	});
+	
+}
+function async3(v, cb){
+	setTimeout(function(){
+		cb(v + 4);
+	});
+}
+//var r1 = async1(1);
+var a1,a2,a3;
+async1(1, function(a1){
+	console.log("callback a1: %d", a1);
+	async2(a1, function(a2){
+		console.log("a2: %d", a2);
+		async3(a2, function(a3){
+			console.log("a3: %d", a3);
+		});
+	});
+});
+
+new Promise(function(resolve, reject){
+	async1(1, function(a1){
+		resolve(a1);
+	});
+}).then(function(a1){
+		return new Promise(function(resolve, reject){
+			async2(a1, resolve);
+		});
+	})
+	.then(function(a2){
+		return new Promise(function(resolve, reject){
+			async3(a2, resolve);
+		});
+	})
+	.then(function(a3){
+		console.log("promise :" + a3);
+	});
+////////////////////////////////////////////////////////
+function pasync1(v){
+	return new Promise(function(resolve, reject){
+		setTimeout(function(){
+			console.log('timeout.')
+			//cb(v + 2);
+			resolve(v + 2);
+		}, 0);
+	});
+}
+function pasync2(v){
+	return new Promise(function(resolve, reject){
+		setTimeout(function(){
+			//cb(v + 3);
+			resolve(v + 3);
+		});
+	});
+	
+}
+function pasync3(v, cb){
+	return new Promise(function(resolve, reject){
+		setTimeout(function(){
+			console.log(v);
+			resolve(v + 4);
+		});
+	});
+}
+pasync1(1)
+.then(function(r1){
+	console.log(r1);
+	return pasync2(r1);
+}).then(function(r2){
+	console.log(r2);
+	return pasync3(r2);
+}).then(function(r3){
+	console.log("pasync :" + r3);
+});
+
+
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

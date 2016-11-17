@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+div{ font-size: 20px;}
+#div2{
+	color : #0000ff; 
+	background-color: #0f0;
+}
+.box{
+	border : 1px solid #000;
+}
+.big{
+	width : 100%; height : 300px;
+}
+.small{
+	width : 100px; height:20px;
+}
+</style>
+<script type="text/javascript">
+function go(){
+/* 	var body_list = document.getElementsByTagName("body");
+	console.log(body_list.length);
+	var body = body_list[0];
+ */
+ 	var body = document.body;
+ 
+ 	console.log(body.childNodes);
+	for(let i=0; i<body.childNodes.length; i++){
+		if(body.childNodes[i].nodeType === 1){
+			console.log(body.childNodes[i].tagName);
+			console.log(body.childNodes[i].getAttribute('id'));
+			console.log(body.childNodes[i].getAttribute('class'));
+			console.log(body.childNodes[i].hasChildNodes());
+		}
+	}
+}
+
+function show(){
+	var div = document.getElementById("div2");
+	//div.setAttribute("style", "background-color:#000;");
+	div.style.backgroundColor = "#000";
+	
+	console.log(div.id, div.className);
+	console.log(div.getAttribute('id'));
+	//div.setAttribute("data-abc", "123");
+	//console.log(div.data-abc);
+	//div.abc= 123;
+	//div.innerHTML = "<button>new button</button>";
+	//div.textContent = "<button>new button</button>";
+	var btn = document.createElement('button');
+	//var text = document.createTextNode("new button");
+	//btn.appendChild(text);
+	btn.textContent = "new button";
+	div.appendChild(btn);
+	
+}
+
+</script>
+</head>
+<body onload="go()">
+<div id="div1" class="box small" style="background:red;">
+	<button class="box" title="길라임" onclick="show()" >click me</button>
+</div>
+<div id="div2" class="box big"  data-lg="true">
+	this is div
+</div>
+
+</body>
+</html>

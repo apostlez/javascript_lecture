@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+function go1(){
+	var cnt1 = document.getElementById('cnt1');
+	cnt1.textContent = 0;
+	//cnt1의 값이 0~100 까지 증가(0.1초 마다 1씩증가)하게 한다.
+	//단, setInterval 함수를 사용해서 구현한다.
+	var num = 0;
+	var id = setInterval(function(){
+		cnt1.textContent = num++;
+		if(num >100) clearInterval(id);
+	}, 100);
+
+}
+function go2(){
+	var cnt2 = document.getElementById('cnt2');
+	
+	//cnt1의 값이 0~100 까지 증가(0.1초 마다 1씩증가)하게 한다.
+	//단, for-loop와 setTimeout 함수를 사용해서 구현한다.
+	/* for(var i=0; i<=100; i++){
+		(function (x){
+			setTimeout(function(){
+				cnt2.textContent = x;
+			}, i * 100)
+		}(i));
+	} */
+	for(let i=0; i<=100; i++){
+			setTimeout(function(){
+				cnt2.textContent = i;
+			}, i * 100)
+	}
+}
+</script>
+</head>
+<body>
+<button onclick="go1()">click me</button>
+<div id="cnt1">--</div>
+<hr>
+<button onclick="go2()">click me</button>
+<div id="cnt2">--</div>
+
+</body>
+</html>

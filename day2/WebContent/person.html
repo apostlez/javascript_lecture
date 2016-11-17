@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+function Person(name, age){
+	if(! (this instanceof Person)){
+		return new Person(name, age);
+	}
+	this.name = name;
+	this.age = age;
+}
+//Person.prototype = new Object();
+//Person.prototype.constructor = Person;
+Person.prototype.sayHello = function(){
+	console.log("My name is %s, %d years old.", this.name, this.age);
+};
+Person.prototype.PI = 3.141592;
+
+var park = Person('park', 30);
+var lee = new Person('lee', 27);
+var kim = new Person('kim', 23);
+lee.sayHello();
+kim.sayHello();
+console.log(lee.PI, kim.PI);
+
+function Apple(name, age){
+	this.name = name;
+	this.age = age;
+}
+var busa = new Apple('busa', 50);
+//busa.sayHello();
+lee.sayHello.call(busa);
+Person.prototype.sayHello.call(busa);
+</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+window.setTimeout(function(){
+	for(var i=0; i<100; i++){
+		console.log("a"+i);
+	}
+}, 0);
+
+console.log('길라임');
+	
+
+var timer;
+function go(){
+	timer = window.setTimeout(function f(){
+		alert('hello');
+	}, 1000);
+}
+function stop(){
+	window.clearTimeout(timer);
+}
+var timer2;
+function go2(){
+	timer2 = window.setInterval(function(){
+		var now = new Date();
+		var clock = window.document.getElementById('clock');
+		clock.innerHTML = now.toLocaleString();
+	}, 1000);
+}
+function stop2(){
+	window.clearInterval(timer2);
+}
+</script>
+
+</head>
+<body>
+<button onclick="go()">go</button>
+<button onclick="stop()">stop</button>
+<div id="clock">--</div>
+<button onclick="go2()">go</button>
+<button onclick="stop2()">stop</button>
+
+</body>
+</html>

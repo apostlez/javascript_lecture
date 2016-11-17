@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+function f(){}
+//f.prototype = new Object();
+console.log(typeof f.prototype); // object
+f.prototype.a = 123;
+f.prototype.b = "abc";
+f.a = 456;
+f.b = "xyz";
+console.log(f.prototype.a, f.prototype.b);
+console.log(f.a, f.b);
+
+var o1 = new f();
+var o2 = new f();
+console.log(o1 instanceof f, o2 instanceof f);
+o1.a = 9999;
+console.log(o1.a, o2.a);
+
+
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+function Person(name){
+	this.name = name;
+}
+//Person.prototype = new Object();
+//Person.prototype.constrcutor = Person;
+Person.prototype.getGreeting = function(){
+	return "Hello! Mr(s). "+ this.name;
+}
+
+function VIPPerson(name, age){
+	//this.name = name;
+	Person.call(this, name);
+	this.age = age;
+}
+VIPPerson.prototype = new Person(); //상속을 위해서는 반드시 해야 하는 코드
+VIPPerson.prototype.constructor = VIPPerson;//상속을 위해서 웬만하면 해야 하는 코드
+VIPPerson.prototype.getGreeting = function(){
+	return Person.prototype.getGreeting.call(this) +  this.age + " old.";
+}
+var lee = new Person('lee');
+console.log(lee.getGreeting());
+var kim = new VIPPerson('kim', 23);
+console.log(kim.getGreeting());
+
+</script>
+
+
+</head>
+<body>
+
+</body>
+</html>

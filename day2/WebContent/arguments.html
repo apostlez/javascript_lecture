@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+function f(){
+	console.log(arguments, arguments.length);
+	for(var i=0;i < arguments.length; i++) {
+		console.log(i, arguments[i], typeof arguments[i]);
+	}
+}
+
+f();
+f(1,2);
+f("one", 2, "three");
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

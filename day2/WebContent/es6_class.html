@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+class Person{
+	constructor(name){
+		this.name = name;
+	}
+	
+	sayHello(){
+		console.log("Hello" + this.name);	
+	}
+}
+
+class VIPPerson extends Person{
+	constructor(name, age){
+		super(name);
+		this.age = age;
+	}
+	sayHello(){
+		super.sayHello();
+		console.log("age is" + this.age);
+	}
+	static abc(){
+		console.log("ABC");
+	}
+}
+var lee = new Person('lee');
+lee.sayHello();
+var kim = new VIPPerson('kim', 23);
+kim.sayHello();
+
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>
