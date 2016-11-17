@@ -1,0 +1,9 @@
+CACHE MANIFEST
+#v.1.0
+CACHE:
+cache/style.css
+cache/script.js
+
+
+FALLBACK:
+img/xwing.png img/pattern.png

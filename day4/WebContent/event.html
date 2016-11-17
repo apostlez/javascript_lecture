@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+div{ 
+	border : 1px solid #000;
+	width : 500px; height:500px;
+	background: #ff0;
+}
+</style>
+<script type="text/javascript">
+window.onload = function init(){
+	var btn = document.getElementById('btn');
+	var div = document.getElementById('div');
+	
+	//btn.onclick = show;
+	//div.onclick = show2;
+	div.addEventListener('click', show2, true);
+	btn.addEventListener('click', show, true);
+	var link = document.getElementById('link');
+	link.addEventListener('click', function(event){
+		event.preventDefault();
+	});
+	
+};
+//document.body.onload = init;
+function show(event){
+	event.preventDefault();
+	event.stopPropagation();
+	//alert('button!!');
+	console.log('button!!')
+}
+function show2(event){
+	event.preventDefault();
+	event.stopPropagation();
+	//alert('div!!');
+	console.log('div!!!');
+}
+
+</script>
+</head>
+<body>
+<div id="div">
+	<button id="btn">btn</button>
+</div>
+<a href="http://naver.com" id="link">Naver</a>
+
+</body>
+</html>

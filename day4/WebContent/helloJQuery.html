@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+.red{ background: #f00;}
+.blue{background: #00f;}
+</style>
+<script type="text/javascript" src="jquery-3.1.1.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('h1')
+		.hide('slow');;//document.getElementsByTagName('h1')  .getAttriute().setAttribute().className.appencdChil()
+	$('<h1>Welcome jQuery</h1>')
+		.css('background', '#ff0')
+		.hide()
+		.prependTo(document.body)
+		.show('slow');//document.createElement('h1').innerHTML(...)
+	$('#myp').click(function(){
+		//$(this).css('background', '#f00');
+//		if($(this).hasClass("red")){
+//			$(this).removeClass("red").addClass("blue");
+//		}else{
+//			$(this).removeClass("blue").addClass("red");
+//		}
+		$(this).toggleClass('red').toggleClass('blue');
+	});
+});
+</script>
+</head>
+<body>
+	<h1>Hello jQuery</h1>
+	<p id="myp" class="red">This is page for jQuery test.</p>
+</body>
+</html>

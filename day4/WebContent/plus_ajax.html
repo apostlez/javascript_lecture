@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = function(){
+	var p1 = document.getElementById('p1');
+	var p2 = document.getElementById('p2');
+	var btn = document.getElementById('exe');
+	var result = document.getElementById('result');
+	
+	btn.onclick = function(){
+		var url = './plus_ajax.jsp?p1='+ p1.value + "&p2=" + p2.value;
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function(){
+			console.log(xhr.readyState);
+			console.log(xhr.responseText);
+			console.log(xhr.responseXML);
+			//result.value = xhr.responseText;
+			var r = xhr.responseXML.getElementsByTagName('result')[0];
+			result.value = r.textContent;
+		};
+		xhr.open('GET', url, true);
+		xhr.send();
+	};
+};
+</script>
+</head>
+<body>
+        <input type="text" id="p1" name="p1" value="">+
+        <input type="text" id="p2" name="p2" value="">
+        <input type="button" value="=" id="exe">
+        <input type="text" id="result"  value="">
+</body>
+</html>

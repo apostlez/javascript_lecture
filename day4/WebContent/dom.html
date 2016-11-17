@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+var cnt=0;
+function go(){
+	var div = document.getElementById('div1');
+	console.log(div);
+	
+	console.log(div.getAttribute('id'), div.id);
+	//div.setAttribute("style","background-color:#f00;");
+	div.style.backgroundColor = "#f00";
+	
+	//div.innerHTML = "<button onclick="alert('hello');">btn</button>";
+	//div.textContent = "<button>btn</button>";
+	var btn = document.createElement('button');
+	btn.id = cnt;
+	btn.textContent = 'new button'+ (cnt++);
+	div.appendChild(btn);
+	//btn.setAttribute('onclick', 'alert("hello");');
+	/* btn.onclick = function(){
+		alert('hello');
+	}; */
+	btn.addEventListener('click', function(){
+		alert('hello');
+	});
+	btn.addEventListener('click', function(){
+		alert('world');
+	});
+	var div2 = document.getElementById("div2");
+	if(div2){
+		//document.getElementsByTagName("body")[0].removeChild(div2);
+		document.body.removeChild(div2);
+	}
+	btn.onclick = function(event){
+		//div.removeChild(btn);
+		//div.removeChild(this);
+		console.log(event);
+		div.removeChild(event.target);
+	}
+	
+}
+</script>
+
+</head>
+<body>
+	<button onclick="go();">click me</button>
+	<div id="div1" >
+	This is div
+	</div>
+	<div id="div2">div2</div>
+</body>
+</html>
